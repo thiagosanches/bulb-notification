@@ -9,17 +9,17 @@ app.post('/blink', async function (req, res) {
     console.log(req.body);
     const arrayRGB = RGB.split(",");
 
-    await axios.post("http://192.168.0.206/json", { on: false });
+    await axios.post("http://192.168.0.27/json", { on: false });
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    await axios.post("http://192.168.0.206/json", {
+    await axios.post("http://192.168.0.27/json", {
         seg: [{ col: [arrayRGB], fx: 2, sx: 255, ix: 100 }]
     });
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    await axios.post("http://192.168.0.206/json", { on: true, bri: 255 });
+    await axios.post("http://192.168.0.27/json", { on: true, bri: 255 });
     await new Promise(resolve => setTimeout(resolve, 200));
-    await axios.post("http://192.168.0.206/json", { on: false });
+    await axios.post("http://192.168.0.27/json", { on: false });
 
     res.end('Message has been sent!');
 });
